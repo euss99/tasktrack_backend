@@ -1,25 +1,20 @@
 import { Router } from "express";
+import {
+  getTasks,
+  createTask,
+  getTaskById,
+  deleteTaskById,
+  updateTaskById,
+  doneTask,
+} from "../controllers/taskController";
 
 const router = Router(); // Creamos una instancia de Router
 
-router.get("/tasks", (req, res) => {
-  res.send("Tasks list");
-}); // Creamos una ruta para el método GET
-
-router.post("/tasks", (req, res) => {
-  res.send("Creating a task");
-});
-
-router.get("/tasks/:id", (req, res) => {
-  res.send("Task id");
-});
-
-router.delete("/tasks/:id", (req, res) => {
-  res.send("Deleting a task");
-});
-
-router.put("/tasks/:id", (req, res) => {
-  res.send("Updating a task");
-});
+router.get("/tasks", getTasks);
+router.post("/tasks", createTask);
+router.get("/tasks/:id", getTaskById);
+router.delete("/tasks/:id", deleteTaskById);
+router.put("/tasks/:id", updateTaskById);
+router.patch("/tasks/:id", doneTask);
 
 export default router; // Exportamos la instancia por defecto de Router
